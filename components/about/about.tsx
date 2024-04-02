@@ -7,13 +7,13 @@ interface Props {
 }
 
 interface AboutText {
-	bullet_point: string;
+	bulletPoint: string;
 }
 
 export const About: FC<Props> = (Props) => {
 	const texts: AboutText[] = Text;
 	const about_points = texts.map((t, i) => {
-		return <li key={i}>{t.bullet_point}</li>;
+		return <li key={i}>{t.bulletPoint}</li>;
 	});
 	return (
 		<section>
