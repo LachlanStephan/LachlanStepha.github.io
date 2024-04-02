@@ -1,7 +1,6 @@
 {
 	"name": "mysite",
 	"version": "0.1.0",
-	"homepage": "https://github.com/LachlanStephan/LachlanStephan.github.io",
 	"private": true,
 	"scripts": {
 		"predeploy": "npm run build",
