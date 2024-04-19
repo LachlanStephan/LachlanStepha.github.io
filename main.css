@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap");
+
+:root {
+	--light: #fffff2;
+	--dark: #133337;
+}
+
+.theme {
+	background-color: var(--light);
+	color: var(--dark);
+	a {
+		color: var(--dark);
+	}
+}
+
+@media (prefers-color-scheme: dark) {
+	.theme {
+		background-color: var(--dark);
+		color: var(--light);
+		a {
+			color: var(--light);
+		}
+	}
+}
+
+html {
+	font-family: "Fira Code", monospace;
+	font-optical-sizing: auto;
+	font-weight: 200;
+	font-style: normal;
+}
+
+body {
+	min-height: 98vh;
+	padding: 0.5rem;
+	margin: 0;
+	justify-content: flex-start;
+	width: 85%;
+	display: flex;
+	flex-direction: column;
+}
+
+nav {
+	display: flex;
+	gap: 0.5rem;
+}
+
+a:hover {
+	color: #ffc0cb;
+}
+
+.blogLinks {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.footer {
+	margin-top: auto;
+}
