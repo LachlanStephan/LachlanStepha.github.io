@@ -21,6 +21,17 @@ function getNavLinks() {
 	];
 }
 
+function createFooter() {
+	footer = createElement("footer");
+	address = createElement("address");
+	a = createLink("Email", "mailto:ljstephan116@gmail.com");
+	address.appendChild(a);
+	footer.appendChild(address);
+	addClass(footer, "footer");
+
+	return footer;
+}
+
 function createUrl(pathSuffix) {
 	const currentUrl = window.location.href;
 	const baseUrl = currentUrl.includes("C:/Users/")
@@ -38,6 +49,10 @@ function createLink(name, path) {
 	return link;
 }
 
+function addClass(element, className) {
+	element.classList.add(className);
+}
+
 function createElement(name) {
 	return document.createElement(name);
 }
@@ -51,6 +66,12 @@ function appendNavToHeader() {
 	h.prepend(createNav());
 }
 
+function appendFooterToEndOfMain() {
+	const b = document.getElementsByTagName("body")[0];
+
+	b.appendChild(createFooter());
+}
+
 function queueOnLoadMethods(methods) {
 	for (let i = 0; i < methods.length; i++) {
 		window.addEventListener("load", function () {
@@ -59,4 +80,9 @@ function queueOnLoadMethods(methods) {
 	}
 }
 
-queueOnLoadMethods([appendNavToHeader]);
+function applyTheme() {
+	html = document.documentElement;
+	addClass(html, "theme");
+}
+
+queueOnLoadMethods([appendNavToHeader, appendFooterToEndOfMain, applyTheme]);
