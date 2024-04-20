@@ -1,8 +1,15 @@
 function getBlogData() {
 	return [
 		{
+			id: "4",
+			date: "20 Apr 2024",
+			name: "La La Land",
+			path: "blog/la-la-land",
+			tags: "Film review, Art",
+		},
+		{
 			id: "3",
-			date: "TBA",
+			date: "Apr 2024",
 			name: "Approaching 3 years in software",
 			path: "blog/approaching-3-years-in-software",
 			tags: "Software development",
@@ -33,15 +40,13 @@ function appendBlogLinks() {
 
 	const data = getBlogData();
 	for (let i = 0; i < data.length; i++) {
+		let text = "(" + data[i].id + ") " + data[i].name;
+
 		if (data[i].wip) {
-			continue;
+			text = text + " (wip)";
 		}
 
-		const link = createLink(
-			"(" + data[i].id + ") " + data[i].name,
-			data[i].path + ".html"
-		);
-		container.appendChild(link);
+		container.appendChild(createLink(text, data[i].path + ".html"));
 	}
 }
 
@@ -56,11 +61,8 @@ function assembleBlogDatum() {
 		return;
 	}
 
-	const date = createElement("p", "Written: " + datum.date);
-	const tags = createElement("p", "Tag(s): " + datum.tags);
-
-	e.appendChild(date);
-	e.appendChild(tags);
+	e.appendChild(createElement("p", "Written: " + datum.date));
+	e.appendChild(createElement("p", "Tag(s): " + datum.tags));
 }
 
 function getCurrentBlogId() {

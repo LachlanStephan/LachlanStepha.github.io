@@ -32,7 +32,7 @@ html {
 
 body {
 	min-height: 98vh;
-	padding: 1rem;
+	padding: 0.5rem;
 	justify-content: flex-start;
 	width: 95%;
 	display: flex;
