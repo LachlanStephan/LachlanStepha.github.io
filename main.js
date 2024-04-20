@@ -9,16 +9,28 @@ function createNav() {
 }
 
 function getNavLinks() {
+	const baseUrl = getBaseUrl();
 	return [
 		{
 			name: "Home",
-			path: createUrl("index.html"),
+			path: createUrl("index.html", baseUrl),
 		},
 		{
 			name: "Blogs",
-			path: createUrl("blog.html"),
+			path: createUrl("blog.html", baseUrl),
 		},
 	];
+}
+
+function getBaseUrl() {
+	const currentUrl = window.location.href;
+	return currentUrl.includes("C:/Users/")
+		? "file:///C:/Users/Lachlan/Dev/mysite/"
+		: "https://lachlanstephan.github.io/";
+}
+
+function createUrl(pathSuffix, baseUrl) {
+	return new URL(pathSuffix, baseUrl);
 }
 
 function createFooter() {
@@ -30,15 +42,6 @@ function createFooter() {
 	addClass(footer, "footer");
 
 	return footer;
-}
-
-function createUrl(pathSuffix) {
-	const currentUrl = window.location.href;
-	const baseUrl = currentUrl.includes("C:/Users/")
-		? "file:///C:/Users/Lachlan/Dev/mysite/"
-		: "https://lachlanstephan.github.io/";
-
-	return new URL(pathSuffix, baseUrl);
 }
 
 function createLink(name, path) {
@@ -53,8 +56,13 @@ function addClass(element, className) {
 	element.classList.add(className);
 }
 
-function createElement(name) {
-	return document.createElement(name);
+function createElement(name, content) {
+	const el = document.createElement(name);
+	if (content) {
+		el.innerHTML = content;
+	}
+
+	return el;
 }
 
 function getElement(id) {
@@ -72,17 +80,17 @@ function appendFooterToEndOfMain() {
 	b.appendChild(createFooter());
 }
 
+function applyTheme() {
+	html = document.documentElement;
+	addClass(html, "theme");
+}
+
 function queueOnLoadMethods(methods) {
 	for (let i = 0; i < methods.length; i++) {
 		window.addEventListener("load", function () {
 			methods[i]();
 		});
 	}
-}
-
-function applyTheme() {
-	html = document.documentElement;
-	addClass(html, "theme");
 }
 
 queueOnLoadMethods([appendNavToHeader, appendFooterToEndOfMain, applyTheme]);
