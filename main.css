@@ -55,6 +55,10 @@ a:hover {
 	gap: 0.5rem;
 }
 
+.backBtn {
+	padding: 1rem 0;
+}
+
 .footer {
 	margin-top: auto;
 }

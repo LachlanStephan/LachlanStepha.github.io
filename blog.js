@@ -9,11 +9,10 @@ function getBlogData() {
 		},
 		{
 			id: "3",
-			date: "Apr 2024",
+			date: "10 Apr 2024",
 			name: "Approaching 3 years in software",
 			path: "blog/approaching-3-years-in-software",
-			tags: "Software development",
-			wip: true,
+			tags: "Software development, Opinion, Rant",
 		},
 		{
 			id: "2",
@@ -50,8 +49,21 @@ function appendBlogLinks() {
 	}
 }
 
+function appendBackButton() {
+	if (!getBlogDataElement()) {
+		return;
+	}
+
+	const main = document.getElementsByTagName("main")[0];
+	main.appendChild(createBlogBackButton());
+}
+
+function getBlogDataElement() {
+	return getElement("blog-data");
+}
+
 function assembleBlogDatum() {
-	const e = getElement("blog-data");
+	const e = getBlogDataElement();
 	if (!e) {
 		return;
 	}
@@ -72,6 +84,14 @@ function getCurrentBlogId() {
 	}
 }
 
+function createBlogBackButton() {
+	const p = createElement("p");
+	const back = createLink("<- Back", createUrl("blog.html", getBaseUrl()));
+	p.appendChild(back);
+
+	return p;
+}
+
 function getBlogDatum(id) {
 	data = getBlogData();
 	for (let i = 0; i < data.length; i++) {
@@ -81,4 +101,4 @@ function getBlogDatum(id) {
 	}
 }
 
-queueOnLoadMethods([appendBlogLinks, assembleBlogDatum]);
+queueOnLoadMethods([appendBlogLinks, assembleBlogDatum, appendBackButton]);

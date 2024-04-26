@@ -34,14 +34,18 @@ function createUrl(pathSuffix, baseUrl) {
 }
 
 function createFooter() {
-	footer = createElement("footer");
-	address = createElement("address");
-	a = createLink("Email", "mailto:ljstephan116@gmail.com");
-	address.appendChild(a);
-	footer.appendChild(address);
+	const footer = createElement("footer");
+	footer.appendChild(createAddress());
 	addClass(footer, "footer");
 
 	return footer;
+}
+
+function createAddress() {
+	const address = createElement("address");
+	address.appendChild(createLink("Email", "mailto:ljstephan116@gmail.com"));
+
+	return address;
 }
 
 function createLink(name, path) {
