@@ -84,11 +84,6 @@ function appendFooterToEndOfMain() {
 	b.appendChild(createFooter());
 }
 
-function applyTheme() {
-	html = document.documentElement;
-	addClass(html, "theme");
-}
-
 function queueOnLoadMethods(methods) {
 	for (let i = 0; i < methods.length; i++) {
 		window.addEventListener("load", function () {
@@ -97,4 +92,4 @@ function queueOnLoadMethods(methods) {
 	}
 }
 
-queueOnLoadMethods([appendNavToHeader, appendFooterToEndOfMain, applyTheme]);
+queueOnLoadMethods([appendNavToHeader, appendFooterToEndOfMain]);

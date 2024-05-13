@@ -5,8 +5,8 @@ function getBlogData() {
 			date: "20 Apr 2024",
 			name: "La La Land",
 			path: "blog/la-la-land",
-			tags: "Film review, Art",
-		},
+			tags: "Film review, Art"
+        },
 		{
 			id: "3",
 			date: "10 Apr 2024",
@@ -68,7 +68,7 @@ function assembleBlogDatum() {
 		return;
 	}
 
-	datum = getBlogDatum(getCurrentBlogId());
+	const datum = getBlogDatum(getCurrentBlogId());
 	if (!datum) {
 		return;
 	}
@@ -93,7 +93,7 @@ function createBlogBackButton() {
 }
 
 function getBlogDatum(id) {
-	data = getBlogData();
+	const data = getBlogData();
 	for (let i = 0; i < data.length; i++) {
 		if (data[i].id === id) {
 			return data[i];
