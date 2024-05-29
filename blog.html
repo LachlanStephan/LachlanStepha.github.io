@@ -23,6 +23,13 @@
 			<h1>Some writings and/or ramblings</h1>
 		</header>
 		<main>
+			<label for="filter">Filter:</label>
+			<input
+				oninput="filterBlogs()"
+				type="text"
+				name="filter"
+				id="filter"
+			/>
 			<ul id="blogLinks" class="blogLinks"></ul>
 		</main>
 	</body>

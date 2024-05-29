@@ -1,3 +1,5 @@
+const filter = getElement("filter");
+
 function getBlogData() {
 	return [
 		{
@@ -5,8 +7,8 @@ function getBlogData() {
 			date: "20 Apr 2024",
 			name: "La La Land",
 			path: "blog/la-la-land",
-			tags: "Film review, Art"
-        },
+			tags: "Film review, Art",
+		},
 		{
 			id: "3",
 			date: "10 Apr 2024",
@@ -44,6 +46,8 @@ function appendBlogLinks() {
 		if (data[i].wip) {
 			text = text + " (wip)";
 		}
+
+		text = text + " (" + data[i].tags + ")";
 
 		container.appendChild(createLink(text, data[i].path + ".html"));
 	}
@@ -98,6 +102,20 @@ function getBlogDatum(id) {
 		if (data[i].id === id) {
 			return data[i];
 		}
+	}
+}
+
+function filterBlogs() {
+	const val = filter.value;
+	const links = getElement("blogLinks").getElementsByTagName("a");
+
+	for (let i = 0; i < links.length; i++) {
+		let show = false;
+		if (links[i].innerText.toLowerCase().includes(val.toLowerCase())) {
+			show = true;
+		}
+
+		links[i].style.display = show ? "flex" : "none";
 	}
 }
 
